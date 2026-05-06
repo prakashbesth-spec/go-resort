@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stays - GO RESORT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #fff; color: #222; }
+        header { width: 100%; background: #fff; padding: 18px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        .logo h4 { color: rgb(34, 174, 76); font-size: 28px; font-weight: bold; }
+        nav { display: flex; gap: 35px; font-size: 18px; }
+        .right-menu { display: flex; gap: 20px; align-items: center; font-size: 18px; }
+        a { text-decoration: none; color: inherit; }
+
+        .container { padding: 60px 50px; max-width: 1400px; margin: 0 auto; }
+        h1 { font-size: 42px; margin-bottom: 40px; }
+
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+        .details { padding: 18px; }
+        .title { font-size: 20px; font-weight: bold; margin-bottom: 8px; }
+        .location { color: #666; margin-bottom: 8px; }
+        .price { font-weight: bold; font-size: 18px; color: #ef5b67; }
+
+        footer { background: #000; color: white; padding: 60px 50px; margin-top: 100px; }
+        .copyright { text-align: center; color: #aaa; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="Go resort1.html"><h4>GO RESORT</h4></a></div>
+        <nav>
+            <a href="Destinations.html">Destinations</a>
+            <a href="Stays.html" style="font-weight: bold; color: rgb(34, 174, 76);">Stays</a>
+            <a href="Experiences.html">Experiences</a>
+            <a href="Blog.html">Blog</a>
+        </nav>
+        <div class="right-menu">
+            <a href="Host.html">Host your place</a>
+            <div>₹</div><div>☰</div><div>👤</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>All Luxury Stays</h1>
+        <div class="grid" id="property-grid">
+            <div style="grid-column: 1/-1; text-align: center;">Loading stays...</div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="copyright"> © 2026 HolidayKeepers. All rights reserved. </div>
+    </footer>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        async function fetchProperties() {
+            const grid = document.getElementById('property-grid');
+            try {
+                const response = await fetch(`${API_URL}/properties`);
+                const data = await response.json();
+                if (data.success && data.data && data.data.length > 0) {
+                    grid.innerHTML = data.data.map(prop => `
+                        <div class="card"> 
+                            <img src="${prop.images[0]?.url || 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6'}" alt="${prop.title}">
+                            <div class="details">
+                                <div class="title">${prop.title}</div>
+                                <div class="location">${prop.location.city}, ${prop.location.country}</div>
+                                <div class="price">₹${prop.pricePerNight.toLocaleString()} / night</div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No properties found.</p>';
+                }
+            } catch (error) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: red;">Backend not reachable.</p>';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', fetchProperties);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1158 @@
+<! DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HolidayKeepers</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+
+            body {
+                background: #fff;
+                color: #222;
+            }
+
+            /* HEADER */
+            header {
+                width: 100%;
+                background: #fff;
+                padding: 18px 50px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .logo-circle {
+                width: 42px;
+                height: 42px;
+                background: #ef5b67;
+                color: #fff;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .logo span {
+                color: #ef5b67;
+            }
+
+            nav {
+                display: flex;
+                gap: 35px;
+                font-size: 18px;
+            }
+
+            .right-menu {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                font-size: 18px;
+            }
+
+            /* HERO */
+            .hero {
+                min-height: 90vh;
+                background: url("https://static.asianpaints.com/content/dam/asianpaintsbeautifulhomes/gallery/bedroom/contemporary-master-bedroom-design-with-textured-wall/contemporary-master-bedroom-design-with-textured-wall.jpg");
+                background-size: cover;
+                background-position: center;
+                padding: 50px;
+                color: white;
+            }
+
+            .tag {
+                display: inline-block;
+                background: rgba(0, 0, 0, 0.35);
+                padding: 10px 20px;
+                border-radius: 30px;
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 25px;
+            }
+
+            .hero h1 {
+                font-size: 72px;
+                line-height: 1.1;
+                max-width: 650px;
+                margin-bottom: 20px;
+            }
+
+            .hero p {
+                font-size: 22px;
+                max-width: 700px;
+                line-height: 1.5;
+                margin-bottom: 30px;
+            }
+
+            .tabs {
+                display: flex;
+                gap: 15px;
+                margin-bottom: 35px;
+            }
+
+            .tab {
+                padding: 12px 28px;
+                border-radius: 30px;
+                background: rgba(255, 255, 255, 0.25);
+                font-size: 18px;
+            }
+
+            .tab.active {
+                background: #fff;
+                color: #000;
+            }
+
+            .search-box {
+                width: 100%;
+                max-width: 1200px;
+                background: #fff;
+                border-radius: 50px;
+                padding: 15px 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .search-item {
+                flex: 1;
+                padding: 0 25px;
+                border-right: 1px solid #eee;
+            }
+
+            .search-item:last-child {
+                border-right: none;
+            }
+
+            .label {
+                font-size: 16px;
+                font-weight: 600;
+                color: #444;
+                margin-bottom: 6px;
+            }
+
+            .sub {
+                font-size: 18px;
+                color: #999;
+            }
+
+            .search-btn {
+                background: #ef5b67;
+                color: white;
+                border: none;
+                padding: 18px 38px;
+                border-radius: 35px;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            /* FEATURED */
+            .featured {
+                padding: 80px 50px;
+                background: #f8f8f8;
+            }
+
+            .section-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 40px;
+            }
+
+            .section-title h2 {
+                font-size: 36px;
+            }
+
+            .section-title p {
+                color: #ef5b67;
+                font-weight: bold;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+
+            .card {
+                background: white;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            }
+
+            .card img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+            }
+
+            .details {
+                padding: 18px;
+            }
+
+            .title {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 8px;
+            }
+
+            .location {
+                color: #666;
+                margin-bottom: 8px;
+            }
+
+            .price {
+                font-weight: bold;
+                font-size: 18px;
+            }
+
+            /* INSPIRATION */
+            .inspiration {
+                padding: 80px 50px;
+            }
+
+            .inspiration-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+            .destination-card {
+                height: 420px;
+                border-radius: 20px;
+                overflow: hidden;
+                background-size: cover;
+                background-position: center;
+                position: relative;
+            }
+
+            .overlay {
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+                height: 100%;
+                padding: 25px;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+
+            .destination-title {
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .count {
+                margin-top: 8px;
+            }
+
+            .lake-harmony {
+                background-image: url("https://images.unsplash.com/photo-1564013799919-ab600027ffc6");
+            }
+
+            .wallenpaupack {
+                background-image: url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c");
+            }
+
+            .grayton-beach {
+                background-image: url("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85");
+            }
+
+            /* EXPERIENCE */
+            .experience {
+                background: #111;
+                color: white;
+                padding: 80px 50px;
+            }
+
+            .experience h2 {
+                font-size: 52px;
+                margin-bottom: 40px;
+                max-width: 700px;
+            }
+
+            .experience-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+
+            .exp-card {
+                height: 420px;
+                border-radius: 20px;
+                overflow: hidden;
+                background-size: cover;
+                background-position: center;
+                position: relative;
+            }
+
+            .exp-overlay {
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+                height: 100%;
+                padding: 25px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+
+            .exp-card h3 {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+
+            .home {
+                background-image: url("https://tse3.mm.bing.net/th/id/OIP.KE72uok-PMdKnnZkN1S4aAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3");
+            }
+
+            .lifestyle {
+                background-image: url("https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?cs=srgb&dl=sea-sky-beach-457882.jpg&fm=jpg");
+            }
+
+            .adventure {
+                background-image: url("https://media.tripinvites.com/places/rishikesh/adventure-activities-in-rishikesh/adventure-activities-in-rishikesh-featured-featured.jpg");
+            }
+
+            .hosting {
+                background-image: url("https://images.unsplash.com/photo-1494526585095-c41746248156");
+            }
+
+            /* HOST SECTION */
+            .host-section {
+                padding: 80px 50px;
+                background: #f5f5f5;
+            }
+
+            .promo-card {
+                background: #9d4be6;
+                color: white;
+                padding: 50px;
+                border-radius: 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .host-label {
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .main-title {
+                font-size: 48px;
+                line-height: 1.2;
+                max-width: 700px;
+                margin-bottom: 20px;
+            }
+
+            .description {
+                max-width: 550px;
+                line-height: 1.7;
+                margin-bottom: 25px;
+            }
+
+            .btn-group {
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                padding: 14px 30px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            .btn-primary {
+                background: white;
+                color: #b33951;
+            }
+
+            .btn-secondary {
+                border: 1px solid white;
+                color: white;
+            }
+
+            .stats-container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .stat-card {
+                background: rgba(255, 255, 255, 0.12);
+                padding: 25px;
+                border-radius: 18px;
+            }
+
+            .stat-number {
+                font-size: 30px;
+                font-weight: bold;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            /* FOOTER */
+            footer {
+                background: #000;
+                color: white;
+                padding: 60px 50px;
+            }
+
+            .footer-grid {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+
+            .footer-col h3 {
+                margin-bottom: 20px;
+            }
+
+            .footer-col p {
+                margin-bottom: 10px;
+                color: #ccc;
+            }
+
+
+
+            .copyright {
+                margin-top: 40px;
+                border-top: 1px solid #333;
+                padding-top: 20px;
+                text-align: center;
+                color: #aaa;
+            }
+
+            /* RESPONSIVE */
+            @media(max-width:992px) {
+
+                .grid,
+                .inspiration-grid,
+                .experience-grid,
+                .stats-container {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media(max-width:768px) {
+                nav {
+                    display: none;
+                }
+
+                .hero h1 {
+                    font-size: 42px;
+                }
+
+                .search-box {
+                    flex-direction: column;
+                    border-radius: 20px;
+                    gap: 20px;
+                }
+
+                .grid,
+                .inspiration-grid,
+                .experience-grid,
+                .stats-container {
+                    grid-template-columns: 1fr;
+                }
+
+                .experience h2,
+                .main-title {
+                    font-size: 34px;
+                }
+            }
+
+
+
+
+
+            .container {
+                max-width: 1100px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .title-section {
+                margin-bottom: 60px;
+            }
+
+            .title-section span {
+                text-transform: uppercase;
+                font-size: 12px;
+                letter-spacing: 2px;
+                color: #888;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .title-section h1 {
+                font-size: 42px;
+                color: #222;
+                font-weight: bold;
+            }
+
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+
+            .feature-card {
+                background: #fff;
+                padding: 30px 20px;
+                border-radius: 16px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+                transition: 0.3s;
+            }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .icon {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 20px;
+                background: #fff3f4;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 26px;
+            }
+
+            .feature-card h3 {
+                font-size: 20px;
+                margin-bottom: 12px;
+                color: #222;
+            }
+
+            .feature-card p {
+                font-size: 15px;
+                color: #666;
+                line-height: 1.6;
+            }
+
+            /* Responsive */
+            @media(max-width: 992px) {
+                .features-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media(max-width: 768px) {
+                .title-section h1 {
+                    font-size: 32px;
+                }
+
+                .features-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+
+
+
+            Loved by travelers .container {
+                max-width: 1000px;
+                text-align: center;
+            }
+
+            .header-section {
+                margin-bottom: 40px;
+            }
+
+            .header-section h2 {
+                font-size: 2.5rem;
+                margin: 10px 0;
+                color: #333;
+            }
+
+            .rating-summary {
+                font-weight: bold;
+                color: #333;
+            }
+
+            .stars {
+                color: #f4c150;
+                font-size: 1.2rem;
+            }
+
+            .testimonial-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                margin-bottom: 50px;
+            }
+
+            .card {
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+                text-align: left;
+            }
+
+            .card p {
+                color: #555;
+                font-style: italic;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .user-info {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+
+                border-radius: 1000%;
+            }
+
+            .user-info img {
+                width: 100px;
+                height: 100px;
+                border-radius: 100%;
+                background-color: #ddd;
+            }
+
+            .user-details h4 {
+                margin: 0;
+                font-size: 1rem;
+            }
+
+            .user-details span {
+                font-size: 0.85rem;
+                color: #888;
+            }
+
+            .brand-logos {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                opacity: 0.6;
+                padding-top: 30px;
+                border-top: 1px solid #eee;
+            }
+
+            .brand-logos span {
+                font-weight: bold;
+                font-size: 1.1rem;
+                color: #444;
+            }
+
+
+
+
+
+            .container {
+                max-width: 1000px;
+                margin: auto;
+            }
+
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .card {
+                background: white;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            .card img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+                border-radius: 20px;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .category {
+                font-size: 0.7rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #777;
+            }
+
+            .title {
+                font-size: 1.1rem;
+                margin: 8px 0;
+                font-weight: bold;
+                line-height: 1.3;
+            }
+
+            .excerpt {
+                font-size: 0.85rem;
+                color: #555;
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+
+            .date {
+                font-size: 0.75rem;
+                color: #999;
+                border-top: 1px solid #eee;
+                padding-top: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <h4 style="color: rgb(34, 174, 76);">GO RESORT</h4>
+            </div>
+            <nav>
+                
+                <a href="Destinations.html" style="text-decoration: none;color: black;">
+                    <div>Destinations ▼</div> 
+                </a>
+
+                <a href="Stays.html" style="text-decoration: none;color: black;"><div>Stays</div></a>
+                <a href="Experiences.html" style="text-decoration: none;color: black;"><div>Experiences</div></a>
+                <a href="Blog.html" style="text-decoration: none;color: black;"><div>Blog</div></a>
+            </nav>
+            <div class="right-menu">
+                <a href="Host.html" style="text-decoration: none;color: black;"><div>Host your place</div></a>
+                <div>₹</div>
+                <div>☰</div>
+                <div>👤</div>
+            </div>
+        </header>
+        <section class="hero">
+            <div class="tag">CURATED STAYS WORLDWIDE</div>
+            <h1>Choose the perfect holiday home for your dream vacation..</h1>
+            <p>Premium holiday homes, carefully selected by HolidayKeepers. Enjoy flexible cancellation, easy split
+                payments, and affordable booking fees.</p>
+            <div class="tabs">
+                <div class="tab active">Stays</div>
+                <div class="tab">Experiences</div>
+                <div class="tab">Events</div>
+            </div>
+            <div class="search-box">
+                <div class="search-item">
+                    <div class="label">📍 Where</div>
+                    <div class="sub">Search destinations</div>
+                </div>
+                <div class="search-item">
+                    <div class="label">📅 Check in</div>
+                    <div class="sub">Add dates</div>
+                </div>
+                <div class="search-item">
+                    <div class="label">📅 Check out</div>
+                    <div class="sub">Add dates</div>
+                </div>
+                <div class="search-item">
+                    <div class="label">👥 Guests</div>
+                    <div class="sub">Add guests</div>
+                </div> <button class="search-btn">🔍 Search</button>
+            </div>
+        </section>
+        <section>
+            <nav style="font-size: 20px; margin-left: 50px; margin-top: 40px;">
+                <div class="category-item"><span>🏰</span> Mansion</div>
+                <div class="category-item"><span>🏡</span> Villa</div>
+                <div class="category-item"><span>🛖</span> Cabin</div>
+                <div class="category-item"><span>🏘️</span> Cottage</div>
+                <div class="category-item"><span>⛺</span> Glamping</div>
+
+                <div class="category-item"><span>🏊</span> pool</div>
+                <div class="category-item"><span>♨️</span> Hot Tub</div>
+                <div class="category-item"><span>🔥</span> Fire Pit</div>
+                <div class="category-item"><span>🎮</span> game room</div>
+                <div class="category-item"><span>👨‍🍳</span> Chef Kitchen</div>
+
+            </nav>
+        </section>
+
+        <section class="featured">
+            <div style="color: rgb(215, 43, 123); margin-top: 10px;">FEATURED STAYS</div>
+            <div class="section-title">
+
+                <h2>Hand-picked homes you'll love</h2>
+                <p>Browse all stays →</p>
+            </div>
+            <div class="grid" id="property-grid">
+                <!-- Data will be loaded here from the backend -->
+                <div class="loading">Loading curated stays...</div>
+            </div>
+        </section>
+        <section class="inspiration">
+            <div class="section-title">
+                <h2>Inspiration for your next escape</h2>
+                <p>Discover destinations →</p>
+            </div>
+            <div class="inspiration-grid">
+                <div class="destination-card lake-harmony">
+                    <div class="overlay">
+                        <div class="destination-title">Lake Harmony</div>
+                        <div class="count">54 properties</div>
+                    </div>
+                </div>
+                <div class="destination-card wallenpaupack">
+                    <div class="overlay">
+                        <div class="destination-title">Lake Wallenpaupack</div>
+                        <div class="count">41 properties</div>
+                    </div>
+                </div>
+                <div class="destination-card grayton-beach">
+                    <div class="overlay">
+                        <div class="destination-title">Grayton Beach</div>
+                        <div class="count">33 properties</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="experience">
+            <h2>More than a stay — a signature experience.</h2>
+            <div class="experience-grid">
+                <div class="exp-card home">
+                    <div class="exp-overlay">
+                        <h3>Homes</h3>
+                    </div>
+                </div>
+                <div class="exp-card lifestyle">
+                    <div class="exp-overlay">
+                        <h3>Lifestyle</h3>
+                    </div>
+                </div>
+                <div class="exp-card adventure">
+                    <div class="exp-overlay">
+                        <h3>Adventure</h3>
+                    </div>
+                </div>
+                <div class="exp-card hosting">
+                    <div class="exp-overlay">
+                        <h3>Experience</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="host-section ">
+            <div class="promo-card">
+                <div>
+                    <div class="host-label">Host With Us</div>
+                    <h2 class="main-title"> Turn your second home into a recurring income opportunity. </h2>
+                    <p class="description"> Join 900+ hosts earning with HolidayKeepers. Lower fees, better tools,
+                        dedicated support, and a private membership of elite guests. </p>
+                    <div class="btn-group"> <a href="#" class="btn btn-primary">Start hosting →</a> <a href="#"
+                            class="btn btn-secondary">Learn more</a> </div>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-card"> <span class="stat-number">40%</span> Lower commission </div>
+                    <div class="stat-card"> <span class="stat-number">24/7</span> Dedicated support </div>
+                    <div class="stat-card"> <span class="stat-number">₹95L+</span> Average yearly earnings </div>
+                    <div class="stat-card"> <span class="stat-number">800+</span> Trusted hosts </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+
+                <div class="title-section">
+                    <span style="margin-top: 80px;;">WHY HOLIDAYKEEPERS</span>
+                    <h1>A better way to book your stay.</h1>
+                </div>
+
+                <div class="features-grid">
+
+                    <!-- Feature 1 -->
+                    <div class="feature-card">
+                        <div class="icon">🔄</div>
+                        <h3>Flexible cancellation</h3>
+                        <p>
+                            Free cancellation on most stays up to 7 days before check-in.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-card">
+                        <div class="icon">💳</div>
+                        <h3>Split payment</h3>
+                        <p>
+                            Pay in easy installments with zero interest across trusted providers.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="feature-card">
+                        <div class="icon">🏷️</div>
+                        <h3>Lower booking fees</h3>
+                        <p>
+                            We charge less than competitors—saving you hundreds per stay.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="feature-card">
+                        <div class="icon">🎧</div>
+                        <h3>24/7 concierge</h3>
+                        <p>
+                            Dedicated humans available around the clock for every booking.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <div class="container">
+            <div class="header-section">
+                <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;margin-top: 80px;">Guest
+                    Reviews</p>
+                <h2>Loved by 5,000+ travelers</h2>
+                <div class="rating-summary">
+                    <span class="stars">★★★★★</span> 4.9/5
+                </div>
+            </div>
+
+            <div class="testimonial-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
+                    <p>"Absolutely magical experience. The villa was impeccable and the HolidayKeepers team handled
+                        every detail with grace."</p>
+                    <h5>Jennifer Adams</h5>
+                    <p>March 2026</p>
+                    <div class="user-info">
+                        <img src="https://www.shutterstock.com/image-photo/happy-professional-business-man-company-260nw-2424450769.jpg"
+                            alt="Jennifer">
+                        <div class="user-details">
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
+                    <p>"Best family vacation we've had. The home exceeded expectations and the concierge arranged
+                        incredible experiences."</p>
+                    <h5>Marcus Chen</h5>
+                    <p>Febryary 2026</p>
+                    <div class="user-info">
+                        <img src="https://thumbs.dreamstime.com/b/business-people-working-together-office-two-serious-men-suits-sitting-desk-laptop-computer-discussing-project-256532024.jpg"
+                            alt="Marcus">
+                        <div class="user-details">
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
+                    <p>"Booking was seamless, the property was spotless, and the split-payment option made it
+                        stress-free."</p>
+                    <h5>priya Sharma</h5>
+                    <p>January 2026</p>
+                    <div class="user-info">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.Bk7R1CIWh8DAY3LwNwS8WAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+                            alt="Priya">
+                        <div class="user-details">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand-logos">
+                <span>Forbes</span>
+                <span>Condé Nast</span>
+                <span>Travel + Leisure</span>
+                <span>Vogue</span>
+                <span>WSJ</span>
+            </div>
+        </div>
+
+
+
+        <section>
+            <div class="container">
+                <h2 style="margin-top: 80px;">Travel inspiration & guides</h2>
+
+                <div class="grid">
+                    <!-- Card 1: Poconos -->
+                    <div class="card">
+                        <img src="https://cdn.pixabay.com/photo/2017/07/21/23/57/concert-2527495__480.jpg"
+                            alt="Poconos Festivals">
+                        <div class="content">
+                            <div class="category">POCONOS • 6 MIN READ</div>
+                            <div class="title">The Best Poconos Festivals to Attend This Year</div>
+                            <p class="excerpt">From wine tastings to music in the mountains—don't miss these seasonal
+                                events...</p>
+                            <div class="date">Apr 30, 2026</div>
+                        </div>
+                    </div>
+                    <!-- Card 2: outdoors -->
+                    <div class="card">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/038/345/982/small_2x/ai-generated-an-adventurous-local-travel-content-creator-hiking-through-a-scenic-trail-near-their-hometown-showcasing-the-natural-beauty-enthusiastic-and-explorative-photo.jpeg"
+                            alt="Poconos Festivals">
+                        <div class="content">
+                            <div class="category">OUTDOORS • 8 MIN READ</div>
+                            <div class="title">Ultimate Hiking Guide: Trails Around Lake Harmony</div>
+                            <p class="excerpt">Lace up for our curated list of scenic trails - from easy loops to full
+                                day treks with breathtaking vistas</p>
+                            <div class="date">Apr 29, 2026</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Dubai -->
+                    <div class="card">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.Z1g0G6-Ys0a02yy2bsF6zAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
+                            alt="Dubai Luxury">
+                        <div class="content">
+                            <div class="category">DUBAI • 5 MIN READ</div>
+                            <div class="title">A Perfect Luxury Weekend in Dubai</div>
+                            <p class="excerpt">Desert safaris, rooftop dining, and private yacht charters—here’s how to
+                                spend 48...</p>
+                            <div class="date">Apr 01, 2026</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Goa -->
+                    <div class="card">
+                        <img src="https://media1.thrillophilia.com/filestore/tflf7l7l8h7zebv743vq67f6mk25_1575266749_beaches10.jpg"
+                            alt="Goa Beaches">
+                        <div class="content">
+                            <div class="category">GOA • 7 MIN READ</div>
+                            <div class="title">10 Hidden Beaches in Goa Only Locals Know</div>
+                            <p class="excerpt">Skip the crowds and discover these pristine, lesser-known coves along the
+                                coast...</p>
+                            <div class="date">Mar 26, 2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div </section>
+
+
+            <footer>
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>HolidayKeepers</h3>
+                        <p>Curated luxury vacation rentals worldwide. </p>
+                        <p>Flexible cancellation,split payments and a </p>
+                        <p>concierge-grade experience on every stay.</p>
+                        <div> <i class="bi bi-telephone"></i> :-8919509408</div>
+                        <div> <i class="bi bi-envelope"></i> :prakashbesth605@gmail.com</div>
+
+                        <div class="icons1">
+                            <i class="bi bi-instagram"></i>
+                            <i class="bi bi-whatsapp"></i>
+                            <i class="bi bi-facebook"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>Support</h3>
+                        <p>Knowledge base</p>
+                        <p>Cancellation policy</p>
+                        <p>Tutorials</p>
+                        <p>safety info</p>
+                        <p>report an issue</p>
+                    </div>
+                    <div class="footer-col">
+                        <h3>About</h3>
+                        <p>Contact us</p>
+                        <p>Careers</p>
+                        <p>Blog</p>
+                        <p>press</p>
+                        <p>company</p>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Host with us</h3>
+                        <p>List your property</p>
+                        <p>Community</p>
+                        <p>Hosting terms</p>
+                        <p>Host resources</p>
+                        <p>insurance</p>
+                    </div>
+                </div>
+                <div class="copyright"> © 2026 HolidayKeepers. All rights reserved. </div>
+            </footer>
+
+
+            
+            
+
+        <script>
+            // ============================================================
+            //  GO RESORT – Frontend API Integration
+            // ============================================================
+            const API_URL = 'http://localhost:5000/api';
+
+            /** Fetch and display properties from the backend */
+            async function fetchProperties() {
+                const grid = document.getElementById('property-grid');
+                try {
+                    const response = await fetch(`${API_URL}/properties`);
+                    const data = await response.json();
+
+                    if (data.success && data.data && data.data.length > 0) {
+                        grid.innerHTML = data.data.map(prop => `
+                            <div class="card"> 
+                                <img src="${prop.images[0]?.url || 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6'}" alt="${prop.title}">
+                                <div class="details">
+                                    <div class="title">${prop.title}</div>
+                                    <div class="location">${prop.location.city}, ${prop.location.country}</div>
+                                    <div>
+                                        <i class="bi bi-people-fill"> :${prop.maxGuests} persons</i>
+                                    </div>
+                                    <div class="price">₹${prop.pricePerNight.toLocaleString()} / night</div>
+                                </div>
+                            </div>
+                        `).join('');
+                    } else {
+                        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">No properties found. Add some to your database!</p>';
+                    }
+                } catch (error) {
+                    console.error('Error fetching properties:', error);
+                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: red;">Backend not reachable. Ensure the server is running on port 5000.</p>';
+                }
+            }
+
+            // Load properties on page load
+            document.addEventListener('DOMContentLoaded', fetchProperties);
+        </script>
+    </body>
+
+    </html>
