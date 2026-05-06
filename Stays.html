@@ -11,7 +11,11 @@
         header { width: 100%; background: #fff; padding: 18px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
         .logo h4 { color: rgb(34, 174, 76); font-size: 28px; font-weight: bold; }
         nav { display: flex; gap: 35px; font-size: 18px; }
-        .right-menu { display: flex; gap: 20px; align-items: center; font-size: 18px; }
+        .right-menu { display: flex; gap: 15px; align-items: center; font-size: 16px; }
+        .user-box { display: flex; align-items: center; gap: 12px; padding: 5px 12px; border: 1px solid #ddd; border-radius: 30px; cursor: pointer; transition: 0.3s; position: relative; }
+        .dropdown-menu { position: absolute; top: 55px; right: 0; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 12px; width: 200px; display: none; z-index: 1000; padding: 10px 0; text-align: left; color: #222; }
+        .dropdown-item { padding: 12px 20px; transition: 0.2s; font-size: 14px; font-weight: normal; }
+        .dropdown-item:hover { background: #f8f8f8; }
         a { text-decoration: none; color: inherit; }
 
         .container { padding: 60px 50px; max-width: 1400px; margin: 0 auto; }
@@ -41,8 +45,18 @@
             <a href="Blog.html">Blog</a>
         </nav>
         <div class="right-menu">
-            <a href="Host.html">Host your place</a>
-            <div>₹</div><div>☰</div><div>👤</div>
+            <a href="HostHome.html">Host your place</a>
+            <div class="user-box" id="user-menu-btn">
+                <i class="bi bi-list"></i>
+                <i class="bi bi-person-circle" style="font-size: 20px; color: #717171;"></i>
+                <div class="dropdown-menu" id="user-dropdown">
+                    <a href="Signup.html" class="dropdown-item" style="font-weight: bold; display: block;">Sign up</a>
+                    <a href="Login.html" class="dropdown-item" style="display: block;">Log in</a>
+                    <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+                    <a href="HostHome.html" class="dropdown-item" style="display: block;">Host your home</a>
+                    <a href="HelpCenter.html" class="dropdown-item" style="display: block;">Help Center</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -83,6 +97,14 @@
             }
         }
         document.addEventListener('DOMContentLoaded', fetchProperties);
+        // User Dropdown Toggle
+        const userBtn = document.getElementById('user-menu-btn');
+        const dropdown = document.getElementById('user-dropdown');
+        userBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+        window.addEventListener('click', () => { dropdown.style.display = 'none'; });
     </script>
 </body>
 </html>
