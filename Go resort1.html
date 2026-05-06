@@ -765,20 +765,21 @@
             <div class="search-box">
                 <div class="search-item">
                     <div class="label">📍 Where</div>
-                    <div class="sub">Search destinations</div>
+                    <input type="text" id="search-dest" placeholder="Search destinations" style="border:none; outline:none; font-size:16px; width:100%;">
                 </div>
                 <div class="search-item">
                     <div class="label">📅 Check in</div>
-                    <div class="sub">Add dates</div>
+                    <input type="date" id="search-in" style="border:none; outline:none; font-size:16px; width:100%;">
                 </div>
                 <div class="search-item">
                     <div class="label">📅 Check out</div>
-                    <div class="sub">Add dates</div>
+                    <input type="date" id="search-out" style="border:none; outline:none; font-size:16px; width:100%;">
                 </div>
                 <div class="search-item">
                     <div class="label">👥 Guests</div>
-                    <div class="sub">Add guests</div>
-                </div> <button class="search-btn">🔍 Search</button>
+                    <input type="number" id="search-guests" placeholder="Add guests" min="1" style="border:none; outline:none; font-size:16px; width:100%;">
+                </div> 
+                <button class="search-btn" id="main-search-btn">🔍 Search</button>
             </div>
         </section>
         <section>
@@ -1152,7 +1153,23 @@
 
             // Load properties on page load
             document.addEventListener('DOMContentLoaded', fetchProperties);
-        </script>
+            // Search Functionality
+        document.getElementById('main-search-btn').addEventListener('click', () => {
+            const dest = document.getElementById('search-dest').value;
+            const checkIn = document.getElementById('search-in').value;
+            const checkOut = document.getElementById('search-out').value;
+            const guests = document.getElementById('search-guests').value;
+
+            const params = new URLSearchParams({
+                destination: dest,
+                checkIn: checkIn,
+                checkOut: checkOut,
+                guests: guests
+            });
+
+            window.location.href = `Search.html?${params.toString()}`;
+        });
+    </script>
     </body>
 
     </html>
