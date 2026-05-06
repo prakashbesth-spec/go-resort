@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - GO RESORT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #fff; color: #222; }
+        header { width: 100%; background: #fff; padding: 18px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        .logo h4 { color: rgb(34, 174, 76); font-size: 28px; font-weight: bold; }
+        nav { display: flex; gap: 35px; font-size: 18px; }
+        a { text-decoration: none; color: inherit; }
+
+        .container { padding: 80px 50px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        h1 { font-size: 48px; margin-bottom: 50px; }
+
+        .event-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .event-card { background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; text-align: left; }
+        .event-card:hover { transform: translateY(-10px); }
+        .event-image { height: 250px; position: relative; }
+        .event-image img { width: 100%; height: 100%; object-fit: cover; }
+        .date-tag { position: absolute; top: 20px; left: 20px; background: white; padding: 10px; border-radius: 12px; text-align: center; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .date-tag span { display: block; color: #ef5b67; font-size: 14px; }
+
+        .event-content { padding: 25px; }
+        .event-content h3 { font-size: 22px; margin-bottom: 10px; }
+        .event-content p { color: #666; font-size: 15px; margin-bottom: 20px; line-height: 1.5; }
+        .event-meta { font-size: 14px; color: #999; font-weight: bold; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="Go resort1.html"><h4>GO RESORT</h4></a></div>
+        <nav>
+            <a href="Destinations.html">Destinations</a>
+            <a href="Stays.html">Stays</a>
+            <a href="Experiences.html">Experiences</a>
+            <a href="Events.html" style="font-weight: bold; color: rgb(34, 174, 76);">Events</a>
+            <a href="Blog.html">Blog</a>
+        </nav>
+        <div class="right-menu">
+            <a href="Host.html" style="font-size: 18px; margin-left: 20px;">Host your place</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Upcoming Events</h1>
+        <div class="event-grid">
+            <div class="event-card">
+                <div class="event-image">
+                    <div class="date-tag">24 <span>DEC</span></div>
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30" alt="Event 1">
+                </div>
+                <div class="event-content">
+                    <div class="event-meta">Music Festival • Goa</div>
+                    <h3>Sunburn Beach Party</h3>
+                    <p>The ultimate electronic music experience on the shores of Vagator Beach.</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-image">
+                    <div class="date-tag">15 <span>JAN</span></div>
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3" alt="Event 2">
+                </div>
+                <div class="event-content">
+                    <div class="event-meta">Workshop • Bali</div>
+                    <h3>Yoga & Wellness Retreat</h3>
+                    <p>Reconnect with yourself through meditation and traditional Balinese healing.</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-image">
+                    <div class="date-tag">02 <span>FEB</span></div>
+                    <img src="https://images.unsplash.com/photo-1514525253344-99a4299401f2" alt="Event 3">
+                </div>
+                <div class="event-content">
+                    <div class="event-meta">Food • Dubai</div>
+                    <h3>Gourmet Desert Dining</h3>
+                    <p>A night of luxury dining under the stars in the heart of the Arabian desert.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
