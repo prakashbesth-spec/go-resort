@@ -152,6 +152,35 @@
                 color: #999;
             }
 
+            .search-btn:hover {
+                background: #d74b57;
+            }
+
+            /* CATEGORY ITEMS */
+            .category-item {
+                display: inline-block;
+                padding: 10px 20px;
+                cursor: pointer;
+                transition: 0.3s;
+                border-bottom: 2px solid transparent;
+                opacity: 0.7;
+            }
+
+            .category-item:hover {
+                opacity: 1;
+                border-bottom: 2px solid #ddd;
+            }
+
+            .category-item.active {
+                opacity: 1;
+                font-weight: bold;
+                border-bottom: 2px solid #ef5b67;
+            }
+
+            .category-item span {
+                margin-right: 8px;
+            }
+
             .search-btn {
                 background: #ef5b67;
                 color: white;
@@ -1117,60 +1146,71 @@
             
 
         <script>
-            // ============================================================
-            //  GO RESORT – Frontend API Integration
-            // ============================================================
             const API_URL = 'http://localhost:5000/api';
 
-            /** Fetch and display properties from the backend */
-            async function fetchProperties() {
+            async function fetchProperties(category = '') {
                 const grid = document.getElementById('property-grid');
+                grid.innerHTML = '<div class="loading">Filtering properties...</div>';
+                
                 try {
-                    const response = await fetch(`${API_URL}/properties`);
+                    const url = category 
+                        ? `${API_URL}/properties?category=${category}` 
+                        : `${API_URL}/properties`;
+                        
+                    const response = await fetch(url);
                     const data = await response.json();
-
+                    
                     if (data.success && data.data && data.data.length > 0) {
                         grid.innerHTML = data.data.map(prop => `
-                            <div class="card"> 
+                            <div class="card">
                                 <img src="${prop.images[0]?.url || 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6'}" alt="${prop.title}">
                                 <div class="details">
                                     <div class="title">${prop.title}</div>
                                     <div class="location">${prop.location.city}, ${prop.location.country}</div>
-                                    <div>
-                                        <i class="bi bi-people-fill"> :${prop.maxGuests} persons</i>
-                                    </div>
                                     <div class="price">₹${prop.pricePerNight.toLocaleString()} / night</div>
                                 </div>
                             </div>
                         `).join('');
                     } else {
-                        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">No properties found. Add some to your database!</p>';
+                        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">No properties found in this category.</p>';
                     }
                 } catch (error) {
-                    console.error('Error fetching properties:', error);
-                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: red;">Backend not reachable. Ensure the server is running on port 5000.</p>';
+                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: red; padding: 40px;">Backend not reachable.</p>';
                 }
             }
 
-            // Load properties on page load
-            document.addEventListener('DOMContentLoaded', fetchProperties);
-            // Search Functionality
-        document.getElementById('main-search-btn').addEventListener('click', () => {
-            const dest = document.getElementById('search-dest').value;
-            const checkIn = document.getElementById('search-in').value;
-            const checkOut = document.getElementById('search-out').value;
-            const guests = document.getElementById('search-guests').value;
-
-            const params = new URLSearchParams({
-                destination: dest,
-                checkIn: checkIn,
-                checkOut: checkOut,
-                guests: guests
+            // Category Filter Logic
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    // Toggle active class
+                    document.querySelectorAll('.category-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    
+                    const category = item.getAttribute('data-category');
+                    fetchProperties(category);
+                });
             });
 
-            window.location.href = `Search.html?${params.toString()}`;
-        });
-    </script>
+            // Load properties on page load
+            document.addEventListener('DOMContentLoaded', () => fetchProperties());
+
+            // Search Functionality
+            document.getElementById('main-search-btn').addEventListener('click', () => {
+                const dest = document.getElementById('search-dest').value;
+                const checkIn = document.getElementById('search-in').value;
+                const checkOut = document.getElementById('search-out').value;
+                const guests = document.getElementById('search-guests').value;
+
+                const params = new URLSearchParams({
+                    destination: dest,
+                    checkIn: checkIn,
+                    checkOut: checkOut,
+                    guests: guests
+                });
+
+                window.location.href = `Search.html?${params.toString()}`;
+            });
+        </script>
     </body>
 
     </html>
