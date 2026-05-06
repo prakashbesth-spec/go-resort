@@ -14,16 +14,60 @@
         .switch { margin-top: 20px; font-size: 14px; color: #666; }
         .switch a { color: #222; font-weight: bold; text-decoration: none; }
         .logo { color: #22ae4c; font-weight: bold; font-size: 24px; margin-bottom: 20px; display: block; text-decoration: none; }
+        .error-msg { color: #ef5b67; font-size: 14px; margin-bottom: 15px; display: none; }
     </style>
 </head>
 <body>
     <div class="auth-card">
         <a href="Go resort1.html" class="logo">GO RESORT</a>
         <h1>Welcome Back</h1>
-        <input type="email" placeholder="Email address">
-        <input type="password" placeholder="Password">
-        <button class="btn">Log in</button>
+        <div id="error" class="error-msg"></div>
+        <input type="email" id="email" placeholder="Email address" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button class="btn" id="login-btn">Log in</button>
         <div class="switch">Don't have an account? <a href="Signup.html">Sign up</a></div>
     </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        
+        document.getElementById('login-btn').addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+
+            errorDiv.style.display = 'none';
+
+            if (!email || !password) {
+                errorDiv.innerText = 'Please fill in all fields';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Store token in localStorage
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('userName', data.user.name);
+                    
+                    window.location.href = 'Go resort1.html';
+                } else {
+                    errorDiv.innerText = data.error || 'Login failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                errorDiv.innerText = 'Server error. Is the backend running?';
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
