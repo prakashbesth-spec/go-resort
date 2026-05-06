@@ -31,9 +31,15 @@
         .dest-title { font-size: 28px; font-weight: bold; }
         .prop-count { margin-top: 10px; opacity: 0.9; }
 
-        footer { background: #000; color: white; padding: 60px 50px; margin-top: 100px; }
-        .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
-        .copyright { margin-top: 40px; border-top: 1px solid #333; padding-top: 20px; text-align: center; color: #aaa; }
+        footer { background: #000; color: white; padding: 80px 50px; margin-top: 100px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .footer-col h3 { font-size: 20px; margin-bottom: 25px; font-weight: bold; }
+        .footer-col p { line-height: 1.6; color: #999; font-size: 15px; margin-bottom: 10px; }
+        .footer-col a { display: block; color: #999; text-decoration: none; margin-bottom: 12px; font-size: 15px; transition: 0.3s; }
+        .footer-col a:hover { color: #fff; padding-left: 5px; }
+        .contact-info { margin-top: 25px; }
+        .contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: #fff; font-weight: bold; }
+        .copyright { margin-top: 60px; border-top: 1px solid #222; padding-top: 30px; text-align: center; color: #666; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -94,11 +100,38 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h3>HolidayKeepers</h3>
+                <h3 style="color: #ef5b67;">HolidayKeepers</h3>
                 <p>Curated luxury vacation rentals worldwide.</p>
+                <p>Flexible cancellation, split payments and a concierge-grade experience on every stay.</p>
+                <div class="contact-info">
+                    <div class="contact-item"><i class="bi bi-telephone"></i> 8919509408</div>
+                    <div class="contact-item"><i class="bi bi-envelope"></i> prakashbesth605@gmail.com</div>
+                </div>
             </div>
-            <div class="footer-col"><h3>Support</h3><p>Knowledge base</p></div>
-            <div class="footer-col"><h3>About</h3><p>Contact us</p></div>
+            <div class="footer-col">
+                <h3>Support</h3>
+                <a href="HelpCenter.html">Knowledge base</a>
+                <a href="#">Cancellation policy</a>
+                <a href="#">Tutorials</a>
+                <a href="#">Safety info</a>
+                <a href="#">Report an issue</a>
+            </div>
+            <div class="footer-col">
+                <h3>About</h3>
+                <a href="#">Contact us</a>
+                <a href="#">Careers</a>
+                <a href="Blog.html">Blog</a>
+                <a href="#">Press</a>
+                <a href="#">Company</a>
+            </div>
+            <div class="footer-col">
+                <h3>Host with us</h3>
+                <a href="HostHome.html">List your property</a>
+                <a href="#">Community</a>
+                <a href="#">Hosting terms</a>
+                <a href="#">Host resources</a>
+                <a href="#">Insurance</a>
+            </div>
         </div>
         <div class="copyright"> © 2026 HolidayKeepers. All rights reserved. </div>
     </footer>
