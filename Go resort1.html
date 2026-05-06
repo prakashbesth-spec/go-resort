@@ -62,9 +62,60 @@
 
             .right-menu {
                 display: flex;
-                gap: 20px;
+                gap: 15px;
                 align-items: center;
-                font-size: 18px;
+                font-size: 16px;
+            }
+
+            .menu-item {
+                padding: 10px 15px;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: 0.3s;
+                font-weight: bold;
+            }
+
+            .menu-item:hover {
+                background: #f5f5f5;
+            }
+
+            .user-box {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 5px 5px 5px 12px;
+                border: 1px solid #ddd;
+                border-radius: 30px;
+                cursor: pointer;
+                transition: 0.3s;
+                position: relative;
+            }
+
+            .user-box:hover {
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+            .dropdown-menu {
+                position: absolute;
+                top: 55px;
+                right: 0;
+                background: white;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                border-radius: 12px;
+                width: 220px;
+                display: none;
+                z-index: 1000;
+                padding: 10px 0;
+            }
+
+            .dropdown-item {
+                padding: 12px 20px;
+                transition: 0.2s;
+                font-size: 14px;
+            }
+
+            .dropdown-item:hover {
+                background: #f8f8f8;
             }
 
             /* HERO */
@@ -776,10 +827,22 @@
                 <a href="Blog.html" style="text-decoration: none;color: black;"><div>Blog</div></a>
             </nav>
             <div class="right-menu">
-                <a href="Host.html" style="text-decoration: none;color: black;"><div>Host your place</div></a>
-                <div>₹</div>
-                <div>☰</div>
-                <div>👤</div>
+                <a href="Host.html" class="menu-item" style="color: inherit;">Host your place</a>
+                <div class="menu-item"><i class="bi bi-globe"></i></div>
+                <div class="user-box" id="user-menu-btn">
+                    <i class="bi bi-list" style="font-size: 20px;"></i>
+                    <div style="width: 32px; height: 32px; background: #717171; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    
+                    <div class="dropdown-menu" id="user-dropdown">
+                        <div class="dropdown-item" style="font-weight: bold;">Sign up</div>
+                        <div class="dropdown-item">Log in</div>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+                        <div class="dropdown-item">Host your home</div>
+                        <div class="dropdown-item">Help Center</div>
+                    </div>
+                </div>
             </div>
         </header>
         <section class="hero">
@@ -1209,6 +1272,18 @@
                 });
 
                 window.location.href = `Search.html?${params.toString()}`;
+            });
+            // User Dropdown Toggle
+            const userBtn = document.getElementById('user-menu-btn');
+            const dropdown = document.getElementById('user-dropdown');
+            
+            userBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            window.addEventListener('click', () => {
+                dropdown.style.display = 'none';
             });
         </script>
     </body>
